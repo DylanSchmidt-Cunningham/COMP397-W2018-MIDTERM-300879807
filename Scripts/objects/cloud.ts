@@ -45,13 +45,21 @@ module objects {
 
     // move the object to some new location
     public Move():void {
-      this.y += this._dy;
-      this.x += this._dx;
+      if(managers.Game.currentScene == config.Scene.PLAY)
+      {
+        this.y += this._dy;
+        this.x += this._dx;
+      }
+      else if (managers.Game.currentScene == config.Scene.LEVEL2)
+      {
+        this.y += this._dy;
+        this.x -= this._dx;
+      }
     }
 
     // check to see if some boundary has been passed
     public CheckBounds():void {
-      // check lower bounds
+      // check lower or left bounds
       if( (managers.Game.currentScene == config.Scene.PLAY &&
         this.y >= 480 + this.height) || 
         (managers.Game.currentScene == config.Scene.LEVEL2 &&

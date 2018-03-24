@@ -88,7 +88,7 @@ var objects;
                     this.x = this.halfWidth;
                 }
             }
-            else if (managers.Game.currentScene == config.Scene.PLAY) {
+            else if (managers.Game.currentScene == config.Scene.LEVEL2) {
                 // bottom boundary
                 if (this.y >= 480 - this.halfHeight) {
                     this.y = 480 - this.halfHeight;

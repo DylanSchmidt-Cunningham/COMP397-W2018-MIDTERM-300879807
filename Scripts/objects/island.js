@@ -24,7 +24,8 @@ var objects;
         // public methods
         // Initializes variables and creates new objects
         Island.prototype.Start = function () {
-            this._dx, this._dy = 5;
+            this._dx = 5;
+            this._dy = 5;
             this.Reset();
         };
         // updates the game object every frame
@@ -55,10 +56,12 @@ var objects;
         // check to see if some boundary has been passed
         Island.prototype.CheckBounds = function () {
             // check lower or left bounds
-            if ((managers.Game.currentScene == config.Scene.PLAY &&
-                this.y >= 480 + this.height) ||
-                (managers.Game.currentScene == config.Scene.LEVEL2 &&
-                    this.x <= -this.width)) {
+            if (managers.Game.currentScene == config.Scene.PLAY &&
+                this.y >= 480 + this.height) {
+                this.Reset();
+            }
+            else if (managers.Game.currentScene == config.Scene.LEVEL2 &&
+                this.x <= -this.width) {
                 this.Reset();
             }
         };

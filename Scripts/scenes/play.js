@@ -30,7 +30,7 @@ var scenes;
             this._island = new objects.Island();
             // instantiate the cloud array
             this._clouds = new Array();
-            this._cloudNum = 1;
+            this._cloudNum = 0; // too slow to test remotely, make it 1 again TODO
             // loop and add each cloud to the array
             for (var count = 0; count < this._cloudNum; count++) {
                 this._clouds[count] = new objects.Cloud();

@@ -44,7 +44,7 @@ module objects {
         this._reset();
       }
       else if(managers.Game.currentScene == config.Scene.LEVEL2 
-        && this.x < -800) {
+        && this.x <= -800) {
         this._reset();
       }
     }
@@ -53,11 +53,12 @@ module objects {
 
     // Initializes variables and creates new objects
     public Start():void {
-      this._dx, this._dy = 5;
+      this._dx = 5;
+      this._dy = 5;
       if(managers.Game.currentScene == config.Scene.LEVEL2)
       {
         // rotate the ocean image
-        this.rotation = 90;
+        this.rotation = -90;
       }
       this._reset();
     }

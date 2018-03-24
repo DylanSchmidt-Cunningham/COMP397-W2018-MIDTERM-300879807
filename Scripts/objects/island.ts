@@ -16,7 +16,8 @@ module objects {
 
     // Initializes variables and creates new objects
     public Start():void {
-      this._dx, this._dy = 5;
+      this._dx = 5;
+      this._dy = 5;
       this.Reset();
     }
 
@@ -55,11 +56,14 @@ module objects {
     // check to see if some boundary has been passed
     public CheckBounds():void {
       // check lower or left bounds
-      if( (managers.Game.currentScene == config.Scene.PLAY &&
-        this.y >= 480 + this.height) || 
-        (managers.Game.currentScene == config.Scene.LEVEL2 &&
-        this.x <= -this.width) ){
-        this.Reset();
+      if(managers.Game.currentScene == config.Scene.PLAY &&
+        this.y >= 480 + this.height)
+        {
+          this.Reset();
+      }
+      else if(managers.Game.currentScene == config.Scene.LEVEL2 &&
+        this.x <= -this.width) {
+          this.Reset();
       }
     }
   }
