@@ -52,6 +52,10 @@ var objects;
         // Initializes variables and creates new objects
         Ocean.prototype.Start = function () {
             this._dx, this._dy = 5;
+            if (managers.Game.currentScene == config.Scene.LEVEL2) {
+                // rotate the ocean image
+                this.setTransform(0, 0, 1, 1, 90);
+            }
             this._reset();
         };
         // updates the game object every frame
