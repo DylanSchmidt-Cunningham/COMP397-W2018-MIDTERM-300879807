@@ -27,9 +27,18 @@ module objects {
       this.planeFlash = new objects.PlaneFlash();
       this.planeFlash.alpha = 1;
       this.planeFlash.on("animationend", this._animationEnded.bind(this), false );
-
-      this.x = 320;
-      this.y = 430;
+      if(managers.Game.currentScene == config.Scene.PLAY)
+      {
+        this.x = 320;
+        this.y = 430;
+      }
+      else if (managers.Game.currentScene == config.Scene.LEVEL2)
+      {
+        this.x = 20;
+        this.y = 240;
+        this.rotation = 90;
+        this.planeFlash.rotation = 90;
+      }
     }
 
     // updates the game object every frame
@@ -49,12 +58,26 @@ module objects {
      // this.x = objects.Game.stage.mouseX;
 
      // keyboard controls
-     if(managers.Game.keyboardManager.moveLeft) {
+     if(managers.Game.currentScene == config.Scene.PLAY
+      && managers.Game.keyboardManager.moveLeft) {
        this.x -= 5;
      }
 
-     if(managers.Game.keyboardManager.moveRight) {
+     if(managers.Game.currentScene == config.Scene.PLAY
+      && managers.Game.keyboardManager.moveRight) {
        this.x += 5;
+     }
+
+     if(managers.Game.currentScene == config.Scene.LEVEL2
+      && managers.Game.keyboardManager.moveForward) {
+       // remember 0 is at the top 
+       this.y -= 5;
+     }
+
+     if(managers.Game.currentScene == config.Scene.LEVEL2
+      && managers.Game.keyboardManager.moveBackward) {
+        // remember 0 is at the top
+       this.y += 5;
      }
 
      this.planeFlash.x = this.x;
@@ -64,14 +87,29 @@ module objects {
 
     // check to see if some boundary has been passed
     public CheckBounds():void {
-      // right boundary
-      if(this.x >= 640 - this.halfWidth) {
-        this.x = 640 - this.halfWidth;
-      }
+      if(managers.Game.currentScene == config.Scene.PLAY)
+      {
+        // right boundary
+        if(this.x >= 640 - this.halfWidth) {
+          this.x = 640 - this.halfWidth;
+        }
 
-      // left boundary
-      if(this.x <= this.halfWidth) {
-        this.x = this.halfWidth;
+        // left boundary
+        if(this.x <= this.halfWidth) {
+          this.x = this.halfWidth;
+        }
+      }
+      else if(managers.Game.currentScene == config.Scene.PLAY)
+      {
+        // bottom boundary
+        if(this.y >= 480 - this.halfHeight) {
+          this.y = 480 - this.halfHeight;
+        }
+
+        // top boundary
+        if(this.y <= this.halfHeight) {
+          this.y = this.halfHeight;
+        }
       }
     }
   }

@@ -22,7 +22,7 @@ module objects {
       }
       else if (managers.Game.currentScene == config.Scene.LEVEL2)
       {
-        this.x = 1920; // right-side x coord + 2 * canvaswidth =  640 + 2 * 640
+        this.x = 0;
       }
     }
 
@@ -44,7 +44,7 @@ module objects {
         this._reset();
       }
       else if(managers.Game.currentScene == config.Scene.LEVEL2 
-        && this.x < -1280) {
+        && this.x < -800) {
         this._reset();
       }
     }
@@ -57,7 +57,7 @@ module objects {
       if(managers.Game.currentScene == config.Scene.LEVEL2)
       {
         // rotate the ocean image
-        this.setTransform(0,0,1,1,90);
+        this.rotation = 90;
       }
       this._reset();
     }
