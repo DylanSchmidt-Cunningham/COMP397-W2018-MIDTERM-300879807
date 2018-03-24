@@ -80,6 +80,11 @@ module scenes {
         managers.Game.currentScene = config.Scene.OVER;
       }
 
+      // if score reaches 500 switch scenes to the level 2 scene
+      if(this._scoreBoard.Score >= 500) {
+        managers.Game.currentScene = config.Scene.LEVEL2;
+      }
+
     }
 
     // This is where the fun happens
