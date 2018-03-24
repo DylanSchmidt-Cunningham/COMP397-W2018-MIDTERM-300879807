@@ -28,7 +28,11 @@ var objects;
             this.CheckBounds();
         };
         Coin.prototype.CheckBounds = function () {
-            if (this.y > (480 + this.height)) {
+            // check lower or left bounds
+            if ((managers.Game.currentScene == config.Scene.PLAY &&
+                this.y >= 480 + this.height) ||
+                (managers.Game.currentScene == config.Scene.LEVEL2 &&
+                    this.x <= -this.width)) {
                 this.alpha = 1;
             }
         };
